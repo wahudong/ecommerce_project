@@ -6,7 +6,7 @@ ActiveAdmin.register Page do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :content, :about_us, :permalink
+  permit_params :content, :permalink, :title
   #
   # or
   #
