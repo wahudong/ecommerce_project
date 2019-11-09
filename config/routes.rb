@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'page/index'
   get 'page/show'
   get 'products/index'
+  get 'static/:permalink', to: 'page#permalink', as: 'permalink'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
