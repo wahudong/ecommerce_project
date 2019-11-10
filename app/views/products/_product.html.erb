@@ -1,0 +1,18 @@
+<div class="column is-one-fifth">
+  <div class="card prodct">
+    <%= link_to "", product, class: "card-link"%>
+      <!--<p class="title is-4"><%=product.name%></p>-->
+      <div class="card-image">
+        <figure class="image is-4by3 is-2*18">
+          <%= image_tag url_for(product.image) %>
+        </figure>
+      </div>
+      <div class="card-content">
+      <ul>
+        <li class="card-title"><%=product.name%></li>
+        <li><%=product.price%></li>
+        <li><%=product.category.name%></li>
+      </ul>
+      </div>
+  </div>
+</div>

@@ -3,6 +3,6 @@
 class Product < ApplicationRecord
   belongs_to :category
   validates :name, presence: true
-
+  # paginates_per 10 # Set the pagination items per page
   has_one_attached :image
 end

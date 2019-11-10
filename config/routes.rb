@@ -3,7 +3,11 @@
 Rails.application.routes.draw do
   get 'page/index'
   get 'page/show'
-  get 'products/index'
+  # get 'products/index'
+  # get 'products/show'
+
+  resources :products, only: %i[index show]
+
   get 'static/:permalink', to: 'page#permalink', as: 'permalink'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

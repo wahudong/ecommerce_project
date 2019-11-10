@@ -1,14 +1,13 @@
+<h1 class="title">All shoes</h1>
+<%= paginate @products %>
 
+<div class="columns is-multiline">
+  <%= render partial: 'products/product',
+  collection: @products,
+  locals: {name_is_link: true}
+  %>
+</div>
 
-
-
-
-<h1>Products#index</h1>
-
-<%@products.each do |p|%>
-  <%=p.name%>
-  <br>
-<%end%>
 
 
 
