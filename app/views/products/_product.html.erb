@@ -1,14 +1,20 @@
-<div class="column is-8">
-  <div class="card prodct">
-    <%= link_to "", product, class: "card-link"%>
-      <!--<p class="title is-4"><%=product.name%></p>-->
+<%if card_is_link%>
+  <div class="column is-one-quarter">
+<%else%>
+  <div class="column is-8">
+<%end%>
+
+  <div class="card prodct" style="padding:25px">
+    <%if card_is_link%>
+      <%= link_to "", product, class: "card-link"%>
+     <%end%>
       <div class="card-image">
         <figure class="image is-4by3 is-2*18">
           <%= image_tag url_for(product.image) %>
         </figure>
       </div>
       <div class="card-content">
-      <ul>
+      <ul style="list-style-type:none; text-align:left">
         <li class="card-title"><%=product.name%></li>
         <li><%=product.price%></li>
         <li><%=product.category.name%></li>

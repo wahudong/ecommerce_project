@@ -1,4 +1,4 @@
-<div class="title">this is <%=@product.name%> detail</div>
+<div class="title">Product Name: <%=@product.name%> detail</div>
 
 <div class="columns center">
   <div class="column is-half">
@@ -7,5 +7,15 @@
       locals: {card_is_link: false}
       %>
    </div>
-  <div class="column is-half"> hello2 </div>
+  <div class="column is-half">
+      <div style="border:2px blue solid; widht:85%; height:95%; margin-top:25px; text-align:left; padding:25px">
+      <p style="margin-top:100px">Description:</p>
+      <p>Unit Price:<%=@product.price%></p>
+      <p>Quantity</p>
+      <p>Add to cart</p>
+
+
+      </div>
+
+  </div>
 </div>
