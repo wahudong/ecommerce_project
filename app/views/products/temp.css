@@ -1,3 +1,5 @@
 .table{
-  columns: #eaf0e9;
+  columns: #a090fa;
 }
+
+<%= link_to "", product, class: "card-link"%>

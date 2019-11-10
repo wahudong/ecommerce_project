@@ -1,1 +1,11 @@
 <div class="title">this is <%=@product.name%> detail</div>
+
+<div class="columns center">
+  <div class="column is-half">
+      <%= render partial: 'products/product',
+      object: @product,
+      locals: {card_is_link: false}
+      %>
+   </div>
+  <div class="column is-half"> hello2 </div>
+</div>
