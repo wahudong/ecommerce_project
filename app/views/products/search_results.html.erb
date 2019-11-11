@@ -1,0 +1,9 @@
+<h1 class="title"> The search result<h1>
+<%=@category_id%>
+
+<div class="columns is-multiline">
+  <%= render partial: 'products/product',
+  collection: @products,
+  locals: {card_is_link: true}
+  %>
+</div>

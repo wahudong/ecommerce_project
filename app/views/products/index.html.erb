@@ -1,4 +1,14 @@
 <h1 class="title">All shoes</h1>
+
+
+
+<%= form_with(url: search_results_products_path, method: "get", local: true) do %>
+        <%= select_tag :category, options_from_collection_for_select(@categories, 'id', 'name') %>
+        <%= label_tag(:query_word, "Search for:") %>
+        <%= text_field_tag(:query_word) %>
+        <%= submit_tag("Search") %>
+      <% end %>
+
 <%= paginate @products %>
 
 <div class="columns is-multiline">
