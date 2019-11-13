@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
 
   def search_results
     @query_word = params[:query_word]
-    @category_id = params[:category]
+    @category_id = params[:category] # params[:category] contain the category id from the search form
     @products = Product.where('name LIKE ? AND category_id = ?', "%#{@query_word}%", @category_id.to_s)
   end
 end

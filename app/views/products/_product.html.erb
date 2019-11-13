@@ -4,7 +4,7 @@
   <div class="column is-8">
 <%end%>
 
-  <div class="card prodct" style="padding:5px">
+  <div class="card prodct" style="padding:2px">
     <%if card_is_link%>
       <%= link_to "", product, class: "card-link"%>
      <%end%>
@@ -15,9 +15,9 @@
       </div>
       <div class="card-content">
       <ul style="list-style-type:none; text-align:left">
-        <li class="card-title"><%=product.name%></li>
-        <li><%=product.price%></li>
-        <li><%=product.category.name%></li>
+        <li class="card-title">Name: <%=product.name%></li>
+        <li>Price: <%=product.price%></li>
+        <li>Category: <%=product.category.name%></li>
       </ul>
       </div>
   </div>
