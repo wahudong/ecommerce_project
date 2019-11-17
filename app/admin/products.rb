@@ -8,6 +8,7 @@ ActiveAdmin.register Product do
   #
   permit_params :price, :on_sale, :picture, :description, :category_id, :name, :image
 
+  # Below is the file upload from in admin page.
   form do |f|
     f.semantic_errors # shows errors on :base
     f.inputs          # builds an input field for every attribute
