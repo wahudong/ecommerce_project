@@ -1,0 +1,10 @@
+<h1 class='title'> Products under <%=@category.name%> category </h1>
+<br>
+
+
+<div class="columns is-multiline">
+  <%= render partial: 'products/product',
+  collection: @products_by_cate,
+  locals: {card_is_link: true}
+  %>
+</div>

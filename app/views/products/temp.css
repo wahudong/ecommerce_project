@@ -8,3 +8,17 @@
    <%= select_tag :category, options_from_collection_for_select(@categories, 'id', 'name') %>
    <%= submit_tag "Search" %>
 <% end %>
+
+
+<div class="columns is-multiline">
+  <%= render partial: 'products/product',
+  collection: @products,
+  locals: {card_is_link: true}
+  %>
+</div>
+
+#below wors
+<%@products_by_cate.each do |product|%>
+<%=product.name%>
+<br>
+<%end%>

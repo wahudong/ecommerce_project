@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # get 'products/index'
   # get 'products/show'
 
+  get 'product/products_by_category', to: 'products#products_by_category'
+
   resources :products, only: %i[index show] do
     collection do
       get 'search_results'
