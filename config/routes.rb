@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # get 'products/show'
 
   get 'product/products_by_category', to: 'products#products_by_category'
+  post 'product/ptoructs_by_filter', to: 'products#products_by_filter'
 
   resources :products, only: %i[index show] do
     collection do

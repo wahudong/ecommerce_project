@@ -11,6 +11,14 @@
 
 <%= paginate @products %>
 
+<br>
+
+<%= form_tag product_ptoructs_by_filter_path do %>
+   <%= select_tag :filter_option, options_for_select(['On sale', 'New', 'Recently Updated']) %>
+   <%= submit_tag "Filter" %>
+<% end %>
+
+
 <div class="columns is-multiline">
   <%= render partial: 'products/product',
   collection: @products,

@@ -22,4 +22,9 @@ class ProductsController < ApplicationController
     # @products = Product.find_by_category_id(@category.id)
     @products_by_cate = Product.where('category_id = ?', @category.id.to_s)
   end
+
+  #???????????????????????????????????
+  def products_by_filter
+    @prodcts_by_filter = Product.find_by(on_sale: params[:filter_option])
+  end
 end
