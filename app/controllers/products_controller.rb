@@ -23,8 +23,17 @@ class ProductsController < ApplicationController
     @products_by_cate = Product.where('category_id = ?', @category.id.to_s)
   end
 
-  #???????????????????????????????????
   def products_by_filter
-    @prodcts_by_filter = Product.find_by(on_sale: params[:filter_option])
+    # @products_by_filter = Product.find_by(on_sale: true) # find only get one record, so not good in this case
+
+    if params[:filter_option] == 'On sale'
+      @products_by_filter = Product.where('on_sale = ?', true)
+    elsif params[:filter_option] == 'New'
+      # ('created_at < ?', 7.days.ago)
+      @products_by_filter = Product.where('created_at > ?', 7.days.ago)
+    elsif params[:filter_option] == 'Recently Updated'
+      @products_by_filter = Product.where('updated_at > ?', 7.days.ago)
+
+    end
   end
 end

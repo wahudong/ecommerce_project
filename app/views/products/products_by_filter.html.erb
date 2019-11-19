@@ -1,4 +1,7 @@
-<%=@products_by_filter.each do |product|%>
-<%=product.name%>
-<br>
-<%end%>
+
+<div class="columns is-multiline">
+  <%= render partial: 'products/product',
+  collection: @products_by_filter,
+  locals: {card_is_link: true}
+  %>
+</div>

@@ -22,3 +22,8 @@
 <%=product.name%>
 <br>
 <%end%>
+
+<%=@products_by_filter.each do |product|%>
+<%=product.name%>
+<br>
+<%end%>
