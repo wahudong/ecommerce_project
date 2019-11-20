@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
+  has_many :sold_products
   belongs_to :category
   validates :name, presence: true
   # paginates_per 10 # Set the pagination items per page

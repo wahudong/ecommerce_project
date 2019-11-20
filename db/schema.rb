@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_063544) do
+ActiveRecord::Schema.define(version: 2019_11_20_150258) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -66,6 +66,37 @@ ActiveRecord::Schema.define(version: 2019_11_19_063544) do
     t.string "name"
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "login_name"
+    t.string "password"
+    t.string "street_no"
+    t.string "street_name"
+    t.string "city"
+    t.string "province"
+    t.string "postal_code"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.string "street_no"
+    t.string "street_name"
+    t.string "city"
+    t.string "province"
+    t.string "postal_cade"
+    t.string "status"
+    t.decimal "pst"
+    t.decimal "gst"
+    t.decimal "total_amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+  end
+
   create_table "pages", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
@@ -86,6 +117,17 @@ ActiveRecord::Schema.define(version: 2019_11_19_063544) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
+  create_table "sold_products", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "product_id", null: false
+    t.decimal "unit_price"
+    t.decimal "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_sold_products_on_order_id"
+    t.index ["product_id"], name: "index_sold_products_on_product_id"
+  end
+
   create_table "taxes", force: :cascade do |t|
     t.string "province"
     t.decimal "gst"
@@ -95,5 +137,8 @@ ActiveRecord::Schema.define(version: 2019_11_19_063544) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "orders", "customers"
   add_foreign_key "products", "categories"
+  add_foreign_key "sold_products", "orders"
+  add_foreign_key "sold_products", "products"
 end
