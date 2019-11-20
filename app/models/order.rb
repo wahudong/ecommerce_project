@@ -5,4 +5,5 @@ class Order < ApplicationRecord
   belongs_to :customer
   validates :customer, presence: true
   validates :province, presence: true
+  validates :city, presence: true
 end
