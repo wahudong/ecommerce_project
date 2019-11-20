@@ -3,4 +3,5 @@
 class Order < ApplicationRecord
   has_many :sold_products
   belongs_to :customer
+  validates :customer, presence: true
 end
