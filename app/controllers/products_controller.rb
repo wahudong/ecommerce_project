@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
+  before_action :initialize_session
+  before_action :load_cart
+
   def index
     @products = Product.all.page(params[:page]).per(8)
     @categories = Category.all
@@ -35,5 +38,20 @@ class ProductsController < ApplicationController
       @products_by_filter = Product.where('updated_at > ?', 7.days.ago)
 
     end
+  end
+
+  def add_to_cart
+    session[:cart] << params[:id] unless session[:cart].include?(params[:id])
+    redirect_to root_path
+  end
+
+  private
+
+  def initialize_session
+    session[:cart] ||= []
+  end
+
+  def load_cart
+    @cart = Product.find(session[:cart])
   end
 end
