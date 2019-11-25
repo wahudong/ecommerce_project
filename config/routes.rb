@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'customers/edit'
+  get 'customer/eit'
   devise_for :users
   get 'page/index'
   get 'page/show'
