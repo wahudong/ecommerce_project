@@ -33,19 +33,13 @@
               // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
               el.classList.toggle('is-active');
               $target.classList.toggle('is-active');
-
             });
           });
         }
       });
-
     </script>
-
   </head>
-
   <body style="font-size:18px">
-
-
 <nav class="navbar " role="navigation" aria-label="main navigation" style="background-color:#a090fa;">
   <div class="container"  style="padding:10px">
     <div class="navbar-brand">
@@ -65,6 +59,7 @@
       <div class="navbar-start" style="padding-left:100px">
           <%= link_to "About", permalink_path(permalink: 'about_us'), class: "navbar-item is-active" %>
           <%= link_to  "Contact", permalink_path(permalink: 'contact_us'), class: "navbar-item is-active"%>
+
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             Category
@@ -86,6 +81,10 @@
             </a>
           </div>
         </div>
+        <%if current_user%>
+          <a class="navbar-item is-active"> My profile </a>
+        <%end%>
+
       </div>
 
       <div class="navbar-end">
