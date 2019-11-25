@@ -4,21 +4,30 @@
   <div class="column is-8">
 <%end%>
 
-  <div class="card prodct" style="padding:2px; height:100%">
-    <%if card_is_link%>
-      <%= link_to "", product, class: "card-link"%>
-     <%end%>
-      <div class="card-image">
-        <figure class="image is-4by3 is-2*18">
-          <%= image_tag url_for(product.image.variant(resize_to_limit: [200, 200]))%>
-        </figure>
-      </div>
-      <div class="card-content">
-      <ul style="list-style-type:none; text-align:left">
-        <li class="card-title">Name: <%=product.name%></li>
-        <li>Price: <%=product.price%></li>
-        <li>Category: <%=product.category.name%></li>
-      </ul>
-      </div>
+  <div class="card prodct center" style="padding:1px; height:100%; border: solid 1px;">
+
+
+        <div class="card-image">
+          <figure class="image is-4by3 is-2*18">
+            <%= image_tag url_for(product.image.variant(resize_to_limit: [200, 200]))%>
+          </figure>
+        </div>
+        <div class="card-content">
+          <ul style="list-style-type:none; text-align:left">
+            <%if card_is_link%>
+              <li> <%= link_to  "detail", product, class: "card-title" %> </li>
+            <%end%>
+            <li class="card-title">Name: <%=product.name%></li>
+            <li>Price: <%=product.price%></li>
+            <li>Category: <%=product.category.name%></li>
+          </ul>
+        </div>
+
+
+    <%if @cart.include?(product)%>
+        <p><strong style="color:red">Product is in your cart.</strong></p>
+        <p> <%= link_to  "Remove from cart", remove_from_cart_path(product.id), method: :delete %></p>
+    <%end%>
+
   </div>
 </div>

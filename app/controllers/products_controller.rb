@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  before_action :initialize_session
-  before_action :load_cart
+  # before_action :initialize_session
+  # before_action :load_cart
 
   def index
     @products = Product.all.page(params[:page]).per(8)
@@ -42,16 +42,28 @@ class ProductsController < ApplicationController
 
   def add_to_cart
     session[:cart] << params[:id] unless session[:cart].include?(params[:id])
+    @product = Product.find(params[:id])
+    redirect_to @product
+  end
+
+  def show_cart_detail
+    @products = Product.find(session[:cart])
+  end
+
+  def remove_from_cart
+    id = params[:id]
+    session[:cart].delete(id)
     redirect_to root_path
+    # redirect_to show
   end
 
   private
 
-  def initialize_session
-    session[:cart] ||= []
-  end
+  #   def initialize_session
+  #     session[:cart] ||= []
+  #   end
 
-  def load_cart
-    @cart = Product.find(session[:cart])
-  end
+  #   def load_cart
+  #     @cart = Product.find(session[:cart])
+  #   end
 end

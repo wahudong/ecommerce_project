@@ -96,8 +96,7 @@
             <strong>Sign up</strong>
             </a>-->
 
-            <strong style="margin-right:20px">Cart:<%=@cart.count%></strong>
-
+            <%= link_to  "Cart:"+@cart.count.to_s, products_show_cart_detail_path, method: :post, style: 'font-size:700; margin-right:20px' %>
 
             <%if current_user%>
               <%= link_to  "Logout", destroy_user_session_path, class: "button is-light", method: :delete %>

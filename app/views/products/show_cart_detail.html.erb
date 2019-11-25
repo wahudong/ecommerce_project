@@ -1,0 +1,14 @@
+
+<%if @cart.empty?%>
+ <div class="container center">
+ <p> There is no items in the shopping cart </p>
+ </div>
+ <%end%>
+
+<div class="columns is-multiline">
+
+  <%= render partial: 'products/product',
+  collection: @products,
+  locals: {card_is_link: true}
+  %>
+</div>
