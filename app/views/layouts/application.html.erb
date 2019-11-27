@@ -38,15 +38,16 @@
         }
       });
     </script>
+    <script src="https://js.stripe.com/v3/"></script>
+
   </head>
   <body style="font-size:18px">
 <nav class="navbar " role="navigation" aria-label="main navigation" style="background-color:#a090fa;">
   <div class="container"  style="padding:10px">
     <div class="navbar-brand">
-      <a class="navbar-item" href="">
-        <%= link_to image_tag('/assets/kisspng-sneakers-shoe.png',size: "150x48"),root_path%>
-
-      </a>
+      <div >
+        <%= link_to image_tag('/assets/kisspng-sneakers-shoe.png',size: "150x140", alt:"logo"),root_path%>
+      </div>
 
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
         <span aria-hidden="true"></span>
@@ -66,19 +67,19 @@
           </a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item">
+            <div class="navbar-item">
               <%= link_to  "Sport Shoes", product_products_by_category_path(:name => "Sport shoes") %>
-            </a>
-            <a class="navbar-item">
+            </div>
+            <div class="navbar-item">
                <%= link_to  "Lady Shoes", product_products_by_category_path(:name => "Lady Shoes") %>
-            </a>
-            <a class="navbar-item">
+            </div>
+            <div class="navbar-item">
               <%= link_to  "Slipper", product_products_by_category_path(:name => "Slipper") %>
-            </a>
+            </div>
             <!--<hr class="navbar-divider">-->
-            <a class="navbar-item">
+            <div class="navbar-item">
               <%= link_to  "Youth Shoes", product_products_by_category_path(:name => "Youth Shoes") %>
-            </a>
+            </div>
           </div>
         </div>
         <%if current_user%>
@@ -95,7 +96,7 @@
             <strong>Sign up</strong>
             </a>-->
 
-            <%= link_to  "Cart:"+@cart.count.to_s, products_show_cart_detail_path, method: :post, style: 'font-size:700; margin-right:20px' %>
+            <%= link_to  "Cart:"+@cart.count.to_s, checkout_show_cart_detail_path, method: :post, style: 'font-weight:700; margin-right:20px' %>
 
             <%if current_user%>
               <%= link_to  "Logout", destroy_user_session_path, class: "button is-light", method: :delete %>

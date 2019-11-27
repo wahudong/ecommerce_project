@@ -52,3 +52,5 @@ Log in
 id = params[:id].to_i
 session[:cart].delete(id)
 redirect_to root_path
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
