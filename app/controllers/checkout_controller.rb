@@ -13,27 +13,32 @@ class CheckoutController < ApplicationController
       return
     end
 
+    product_arr = []
+    products.each do |item|
+      product_arr << { name: item.name, description: item.description, amount: 124, currency: 'CAD', quantity: 1 }
+    end
+
     @session = Stripe::Checkout::Session.create(
       payment_method_types: [:card],
-      line_items:
-      [ # This is a array of dictionary, a set of dictionary is a product to pay.
-        {
-          name: 'Good Product1',
-          description: 'Good Product1',
-          amount: 1545,
-          currency: 'cad',
-          quantity: 1
-        },
+      line_items: product_arr,
+      # [ # This is a array of dictionary, a set of dictionary is a product to pay.
+      #   {
+      #     name: 'Good Product1',
+      #     description: 'Good Product1',
+      #     amount: 1545,
+      #     currency: 'cad',
+      #     quantity: 1
+      #   },
 
-        {
-          name: 'Good Product2',
-          description: 'Good Product2',
-          amount: 111,
-          currency: 'cad',
-          quantity: 1
-        }
+      #   {
+      #     name: 'Good Product2',
+      #     description: 'Good Product2',
+      #     amount: 111,
+      #     currency: 'cad',
+      #     quantity: 1
+      #   }
 
-      ],
+      # ],
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url
     )
@@ -44,6 +49,9 @@ class CheckoutController < ApplicationController
   end
 
   def success
+    session[:cart] = []
+    load_cart
+
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
   end

@@ -54,3 +54,4 @@ session[:cart].delete(id)
 redirect_to root_path
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<%=# debug @session%>

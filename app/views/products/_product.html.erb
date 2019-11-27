@@ -9,7 +9,7 @@
 
         <div class="card-image">
           <figure class="image is-4by3 is-2*18">
-            <%= image_tag url_for(product.image.variant(resize_to_limit: [200, 200]))%>
+            <%= image_tag url_for(product.image.variant(resize_to_limit: [200, 200])), alt: "product_img"%>
           </figure>
         </div>
         <div class="card-content">
