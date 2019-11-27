@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   delete 'products/remove_from_cart/:id', to: 'products#remove_from_cart', as: 'remove_from_cart'
   post 'products/show_cart_detail', to: 'products#show_cart_detail'
 
+  get 'customers/edit', to: 'customers#edit', as: 'customer_edit'
+
   get 'static/:permalink', to: 'page#permalink', as: 'permalink'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
