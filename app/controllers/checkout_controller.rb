@@ -13,9 +13,11 @@ class CheckoutController < ApplicationController
       return
     end
 
+    # tax = Tax.find_by_province(province)
+
     product_arr = []
     products.each do |item|
-      product_arr << { name: item.name, description: item.description, amount: 124, currency: 'CAD', quantity: 1 }
+      product_arr << { name: item.name, description: item.description, amount: (item.price * 100).to_i, currency: 'CAD', quantity: 1 }
     end
 
     @session = Stripe::Checkout::Session.create(

@@ -1,1 +1,61 @@
-hello
+
+<h1 class="title center">Sorry, you don't have your profiles, Please creat one</h1>
+<h1 class="title center">Create <%=current_user.email%>   Profile</h1>
+
+<%= form_with model: @customer, local: true do |form| %>
+  <% if@customer.errors.any?%>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved new data:
+      </h2>
+
+      <ul>
+          <% @customer.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+      </ul>
+    </div>
+  <%end%>
+
+
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </p>
+
+    <p>
+      <%= form.label :street_no%>
+      <%= form.text_field :street_no %>
+    </p>
+
+    <p>
+      <%= form.label :street_name%>
+      <%= form.text_field :street_name %>
+    </p>
+
+     <p>
+      <%= form.label :city%>
+      <%= form.text_field :city %>
+    </p>
+
+    <p>
+      <%= form.label :province%>
+      <%= form.text_field :province %>
+    </p>
+
+     <p>
+      <%= form.label :postal_code%>
+      <%= form.text_field :postal_code %>
+    </p>
+
+    <p>
+      <%= form.label :phone%>
+      <%= form.text_field :phone %>
+    </p>
+
+
+    <p>
+      <%= form.submit%>
+    </p>
+
+<% end %>

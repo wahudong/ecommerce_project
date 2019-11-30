@@ -29,4 +29,14 @@ class CustomersController < ApplicationController
     # param = params[:id]
     @customer = Customer.new
   end
+
+  def create
+    @customer = Customer.new(params.require(:customer).permit(:name, :street_no, :street_name, :city, :province, :postal_code, :phone))
+
+    @customer.user_id = current_user.id
+
+    @customer.save
+
+    render 'show'
+  end
 end
