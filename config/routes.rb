@@ -29,11 +29,13 @@ Rails.application.routes.draw do
   get 'checkout/success', to: 'checkout#success', as: 'checkout_success'
   # end
 
-  get 'customers/edit', to: 'customers#edit', as: 'customer_edit'
+  # get 'customers/edit', to: 'customers#edit', as: 'customer_edit'
 
   get 'static/:permalink', to: 'page#permalink', as: 'permalink'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  resources :customers
 
   root to: 'products#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

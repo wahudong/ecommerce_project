@@ -55,3 +55,54 @@ redirect_to root_path
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 <%=# debug @session%>
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+<tr style="border:solid 1px">
+<td>Street No</td>
+<td><%=@customer.street_no%></td>
+</tr>
+
+<tr style="border:solid 1px">
+<td>Street name</td>
+<td><%=@customer.street_name%></td>
+</tr>
+
+<tr style="border:solid 1px">
+<td>City</td>
+<td><%=@customer.city%></td>
+</tr>
+
+<tr style="border:solid 1px">
+<td>Province</td>
+<td><%=@customer.province%></td>
+</tr>
+
+<tr style="border:solid 1px">
+<td>Postal_code</td>
+<td><%=@customer.postal_code%></td>
+</tr>
+
+<tr style="border:solid 1px">
+<td>E-mail</td>
+<td><%=@customer.email%></td>
+</tr>
+<tr style="border:solid 1px">
+<td>Phone</td>
+<td><%=@customer.phone%></td>
+</tr>
+</table>
+
+<p><%= link_to 'Edit', edit_customer_path(@customer)%> </p>
+
+-----------
+<tr style="border:solid 1px">
+      <td>E-mail</td>
+      <td><%=@customer.email%></td>
+</tr>
+
+
+<p>
+<%= form.label :email%>
+<%= form.email_field :email %>
+</p>

@@ -1,0 +1,52 @@
+<%if @customer.nil?%>
+     need to careat a new custmoer
+<%else%>
+
+    <h1 class="title center"><%=@customer.name%>'s profiles</h1>
+    <table>
+    <tr style="border:solid 1px">
+        <td>Name</td>
+        <td><%=@customer.name%></td>
+    </tr>
+
+    <tr style="border:solid 1px">
+        <td>Login Account</td>
+        <td><%=User.find(@customer.user_id).email%></td>
+    </tr>
+
+    <tr style="border:solid 1px">
+        <td>Street No</td>
+        <td><%=@customer.street_no%></td>
+    </tr>
+
+    <tr style="border:solid 1px">
+        <td>Street name</td>
+        <td><%=@customer.street_name%></td>
+    </tr>
+
+    <tr style="border:solid 1px">
+        <td>City</td>
+        <td><%=@customer.city%></td>
+    </tr>
+
+    <tr style="border:solid 1px">
+        <td>Province</td>
+        <td><%=@customer.province%></td>
+    </tr>
+
+    <tr style="border:solid 1px">
+        <td>Postal_code</td>
+        <td><%=@customer.postal_code%></td>
+    </tr>
+
+    <tr style="border:solid 1px">
+        <td>Phone</td>
+        <td><%=@customer.phone%></td>
+    </tr>
+
+    </table>
+
+<p><%= link_to 'Edit', edit_customer_path(@customer)%> </p>
+<%end%>
+
+
