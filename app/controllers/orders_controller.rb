@@ -24,4 +24,14 @@ class OrdersController < ApplicationController
     session[:cart] = []
     load_cart
   end
+
+  def myorders
+    @customer = Customer.find_by_user_id(current_user.id)
+    @myorders = @customer.orders
+  end
+
+  def order_detail
+    # @par = params[:id]
+    @order = Order.find(params[:id])
+  end
 end

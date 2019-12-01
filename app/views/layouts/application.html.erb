@@ -84,6 +84,7 @@
         </div>
         <%if current_user%>
           <%= link_to  "My profile", customer_path(current_user.id),  class: "navbar-item is-active" %>
+          <%= link_to  "My orders", myorders_path, class: "navbar-item is-active" %>
         <%end%>
 
       </div>

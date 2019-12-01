@@ -1,0 +1,40 @@
+<h1 class="title center"><%=@customer.name%>'s Orders</h1>
+<!--<%=@myorders[0].city%>-->
+
+<table>
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Street No</th>
+      <th>Street Name</th>
+      <th>City</th>
+      <th>Province</th>
+      <th>Post Code</th>
+      <th>Status</th>
+      <th>Pst</th>
+      <th>Gst</th>
+      <th>Total Amount</th>
+      <th>Detail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@myorders.each do |order|%>
+      <tr>
+        <td><%=order.id%></td>
+        <td><%=order.street_no%></td>
+        <td><%=order.street_name%></td>
+        <td><%=order.city%></td>
+        <td><%=order.province%></td>
+        <td><%=order.postal_cade%></td>
+        <td><%=order.status%></td>
+        <td><%=order.pst%></td>
+        <td><%=order.gst%></td>
+        <td><%=number_to_currency(order.total_amount)%></td>
+        <td><%= link_to  "Detail", order_detail_path(id: order.id) %>
+
+      </tr>
+    <%end%>
+
+
+</table>
+

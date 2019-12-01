@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   resources :customers
 
   get 'orders/create', to: 'orders#create', as: 'create_orders'
+  get 'orders/myorders', to: 'orders#myorders', as: 'myorders'
+  get 'orders/order_detail', to: 'orders#order_detail', as: 'order_detail'
 
   root to: 'products#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
