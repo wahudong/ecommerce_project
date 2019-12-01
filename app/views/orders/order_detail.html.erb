@@ -1,2 +1,61 @@
-@param:
-<%=@order.total_amount%>
+<h1 class="title center"><%=@order.customer.name%>'s Order Detail</h1>
+<!--<%=@order.total_amount%>-->
+
+<table>
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Street No</th>
+      <th>Street Name</th>
+      <th>City</th>
+      <th>Province</th>
+      <th>Post Code</th>
+      <th>Status</th>
+      <th>Pst</th>
+      <th>Gst</th>
+      <th>Total Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%=@order.id%></td>
+      <td><%=@order.street_no%></td>
+      <td><%=@order.street_name%></td>
+      <td><%=@order.city%></td>
+      <td><%=@order.province%></td>
+      <td><%=@order.postal_cade%></td>
+      <td><%=@order.status%></td>
+      <td><%=@order.pst%></td>
+      <td><%=@order.gst%></td>
+      <td>CAD<%=number_to_currency(@order.total_amount)%></td>
+    </tr>
+
+  </tbody>
+
+</table>
+
+<br>
+<p class="sub-title"><%=@order.sold_products.count%> Products in this order: </p>
+
+<%products_sold = @order.sold_products%>
+<table>
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Product Name</th>
+      <th>Unit Price</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%products_sold.each do |x|%>
+    <tr>
+      <td><%=@order.id%></td>
+      <td><%=x.product.name%></td>
+      <td><%=x.unit_price%></td>
+      <td><%=x.quantity.to_i%></td>
+    </tr>
+    <%end%>
+  </tbody>
+
+</table>
