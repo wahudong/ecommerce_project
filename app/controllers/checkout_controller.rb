@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CheckoutController < ApplicationController
+  before_action :authenticate_user!
+
   $product_arr = [] # Since the amount of each product need to add tax, I create another array Product_arr[] to store it, and it need to be ass in success method, so it is a global variable avaliable all app
 
   def show_cart_detail
@@ -61,6 +63,7 @@ class CheckoutController < ApplicationController
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
 
     # redirect_to create_orders_path($product_arr) # don't konw how to pass the array by path. this doesn't work.
+
     redirect_to create_orders_path # without pass params, using $product_arr global variable to pass purchasing products.
   end
 

@@ -1,5 +1,5 @@
 <h1 class="title center"> Thank you, we successfully received money</h1>
 
-Order:
-<p><%=@order%></p>  <!--# @product is an array of dictionary-->
+Order amount:
+<p><%=number_to_currency( @order.total_amount)%></p>  <!--# @product is an array of dictionary-->
 
