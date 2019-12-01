@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CheckoutController < ApplicationController
+  $product_arr = [] # Since the amount of each product need to add tax, I create another array Product_arr[] to store it, and it need to be ass in success method, so it is a global variable avaliable all app
+
   def show_cart_detail
     @products = Product.find(session[:cart])
   end
@@ -17,14 +19,14 @@ class CheckoutController < ApplicationController
     tax_province = Tax.find_by_province(province)
     tax = tax_province.gst + tax_province.pst
 
-    product_arr = []
+    $product_arr = []
     products.each do |item|
-      product_arr << { name: item.name, description: item.description, amount: (item.price * (1 + tax) * 100).to_i, currency: 'CAD', quantity: 1 }
+      $product_arr << { name: item.name, description: item.description, amount: (item.price * (1 + tax) * 100).to_i, currency: 'CAD', quantity: 1 }
     end
 
     @session = Stripe::Checkout::Session.create(
       payment_method_types: [:card],
-      line_items: product_arr,
+      line_items: $product_arr,
       # [ # This is a array of dictionary, a set of dictionary is a product to pay.
       #   {
       #     name: 'Good Product1',
@@ -53,11 +55,13 @@ class CheckoutController < ApplicationController
   end
 
   def success
-    session[:cart] = []
-    load_cart
-
+    # session[:cart] = []
+    # load_cart
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
+
+    # redirect_to create_orders_path($product_arr) # don't konw how to pass the array by path. this doesn't work.
+    redirect_to create_orders_path # without pass params, using $product_arr global variable to pass purchasing products.
   end
 
   def cancel; end
